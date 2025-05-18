@@ -13,7 +13,7 @@ class Record:
         for i, phone in enumerate(self.phones):
             if phone.value == old_phone:
                 self.phones[i] = Phone(new_phone)
-                return f"Phone updated: {old_phone} → {new_phone}"
+                return
         raise ValueError("Old phone number not found.")
 
     def add_birthday(self, birthday):
