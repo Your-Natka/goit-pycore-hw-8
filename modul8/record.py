@@ -1,20 +1,22 @@
 from modul8.fields import Name, Phone, Birthday
 
 class Record:
-    def __init__(self, name):
-        self.name = Name(name)
+    def __init__(self, name: Name):
+        self.name = name
         self.phones = []
         self.birthday = None
 
-    def add_phone(self, phone):
-        self.phones.append(Phone(phone))
+    def add_phone(self, phone: Phone):
+        if phone not in self.phones:
+            self.phones.append(phone)
 
-    def change_phone(self, old_phone, new_phone):
-        for i, phone in enumerate(self.phones):
-            if phone.value == old_phone:
-                self.phones[i] = Phone(new_phone)
+    def edit_phone(self, old_phone: Phone, new_phone: Phone):
+        for idx, ph in enumerate(self.phones):
+            if ph.value == old_phone.value:
+                self.phones[idx] = new_phone
                 return
         raise ValueError("Old phone number not found.")
 
-    def add_birthday(self, birthday):
-        self.birthday = Birthday(birthday)
+    def add_birthday(self, birthday: Birthday):
+        self.birthday = birthday
+
